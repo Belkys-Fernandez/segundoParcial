@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Productos</span>
+    <div class="example-spacer">
+    </div>
+    <button mat-button color="primary" routerLink="/tablero/crear-producto">Agregar</button>
+  </mat-toolbar>
+
+      <div class="mat-elevation-z8">
+     
+          <table>
+            <tr>
+              <th style="color: blue;">Nombre</th>
+              <th style="color: blue;">Categoria</th>
+              <th style="color: blue;">Precio</th>
+              <th style="color: blue;">Presentacion</th>
+            </tr>
+
+            <tbody *ngFor="let prod of listProducto; index as i">
+            
+            
+            
+              <tr>
+                <label >{{prod.nombre}}</label>
+              
+                <td>
+                  <label *ngIf="listProducto[i].estadoModificacion==false || listProducto[i].estadoModificacion==null">{{listProducto[i].categoria  }}</label>
+                  <input *ngIf="listProducto[i].estadoModificacion==true" type="text" [(ngModel)]="prod.categoria" value="{{listProducto[i].categoria}}">
+                </td>
+                <td>
+                  <label *ngIf="listProducto[i].estadoModificacion==false || listProducto[i].estadoModificacion==null">{{listProducto[i].precio }}</label>
+                  <input *ngIf="listProducto[i].estadoModificacion==true" type="text" [(ngModel)]="listProducto[i].precio" value="{{listProducto[i].precio}}">
+                </td>
+                <td>
+                  <label *ngIf="listProducto[i].estadoModificacion==false || listProducto[i].estadoModificacion==null">{{listProducto[i].presentacion}}</label>
+                  <input *ngIf="listProducto[i].estadoModificacion==true" type="text" [(ngModel)]="listProducto[i].presentacion" value="{{listProducto[i].presentacion}}">
+                </td>
+                <td>
+                  <button *ngIf="listProducto[i].estadoModificacion==false || listProducto[i].estadoModificacion==null" (click)="modificarProducto(listProducto[i])  ">Modificar</button>
+                  <button *ngIf="listProducto[i].estadoModificacion==true" (click)="guardarModificacion(listProducto[i])">Guardar Modificar</button>
+                  <button (click)="eliminarProducto(listProducto[i].nombre )" style="color: #e15639;" >Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>          
+            
+      </div>
+      
+</div>
+
+
+      
+   

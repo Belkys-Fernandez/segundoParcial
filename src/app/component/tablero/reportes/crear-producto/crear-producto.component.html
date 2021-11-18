@@ -1,0 +1,64 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Cargar  Producto</span>
+      </mat-toolbar>
+
+      <mat-card style="margin-top: 70px;">
+      
+        <form [formGroup]="form"  (ngSubmit)="agregarproducto()">
+            <mat-grid-list cols="4" rowHeight="70px">
+
+                <mat-grid-tile  [colspan]="1" [rowspan]="1" >
+                    <mat-form-field  class="ancho">
+                        <mat-label>Nombre del Producto</mat-label><i [ngClass]="{'validado bi-x-circle-fill': form.get('nombre')?.hasError('required'), 'error bi bi-check-circle-fill iconos' : !form.get('nombre')?.hasError('required')}" id="nombre"></i>
+                        <input matInput  autocomplete="off" type="texto"  formControlName="nombre"  id="nombre">
+                      </mat-form-field>
+            </mat-grid-tile>
+
+        
+     
+            <mat-grid-tile [colspan]="3"[rowspan]="5"   >
+              <mat-form-field   >
+                <img src="./assets/img/usuario.png" width="250" height="250">
+                <input matInput autocomplete="off">
+              </mat-form-field>
+             </mat-grid-tile>
+
+             <mat-grid-tile  [colspan]="1" [rowspan]="1">
+                <mat-form-field  class="ancho">
+                    <mat-label>Categoria</mat-label><i [ngClass]="{'validado bi-x-circle-fill': form.get('categoria')?.hasError('required'), 'error bi bi-check-circle-fill iconos' : !form.get('categoria')?.hasError('required')}" ></i>
+                    <input matInput autocomplete="off"  type="text"  formControlName="categoria"  id="categoria" >
+                  </mat-form-field>
+             </mat-grid-tile>
+
+             <mat-grid-tile  [colspan]="1" [rowspan]="1" >
+                <mat-form-field  class="ancho">
+                    <mat-label>Precio</mat-label><i [ngClass]="{'validado bi-x-circle-fill': form.get('precio')?.hasError('required'), 'error bi bi-check-circle-fill iconos' : !form.get('precio')?.hasError('required')}" ></i>
+                    <input matInput autocomplete="off"  type="text"  formControlName="precio" id="precio">
+                  </mat-form-field>
+             </mat-grid-tile>
+
+             <mat-grid-tile  [colspan]="1" [rowspan]="1">
+              <mat-form-field  class="ancho">
+                <mat-label>Presentación</mat-label><i [ngClass]="{'validado bi-x-circle-fill': form.get('presentacion')?.hasError('required'), 'error bi bi-check-circle-fill iconos' : !form.get('presentacion')?.hasError('required')}" ></i>
+                <mat-select formControlName = "presentacion">
+                  <mat-option   *ngFor="let  iten of  presentacion" [value]="iten">  {{iten}}</mat-option >
+                </mat-select>
+              </mat-form-field>
+             </mat-grid-tile>
+
+             <mat-grid-tile  [colspan]="1" [rowspan]="1">
+               
+           
+              <button type ="submit" mat-raised-button color="primary">Aceptar</button>
+
+             </mat-grid-tile>
+
+              </mat-grid-list>
+
+
+        </form>
+        
+        </mat-card>
+
+</div>
